@@ -18,8 +18,11 @@ GEM
       faraday (~> 1.0)
     gli (2.19.2)
     hashie (4.1.0)
+    mini_portile2 (2.4.0)
     multipart-post (2.1.1)
     nio4r (2.5.2)
+    nokogiri (1.10.10)
+      mini_portile2 (~> 2.4.0)
     ruby_coincheck_client (0.3.0)
     slack-ruby-bot (0.16.0)
       hashie
@@ -41,6 +44,7 @@ PLATFORMS
 DEPENDENCIES
   async-websocket (~> 0.8.0)
   dotenv
+  nokogiri
   ruby_coincheck_client
   slack-ruby-bot
 

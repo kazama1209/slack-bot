@@ -2,6 +2,7 @@ require 'dotenv'
 require 'slack-ruby-client'
 require './src/weather'
 require './src/cryptocurrency'
+require './src/anime_quote'
 
 Dotenv.load
 
@@ -23,6 +24,9 @@ client.on :message do |data|
     when 'BTC価格は？'
       cryptocurrency = Cryptcurrency.new
       client.message channel: data.channel, text: cryptocurrency.rate_info
+    when 'アニメ名言'
+      anime_quote = AnimeQuote.new
+      client.message channel: data.channel, text: anime_quote.random_output
   end
 end
 
