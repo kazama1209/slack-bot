@@ -20,6 +20,7 @@ GEM
     hashie (4.1.0)
     multipart-post (2.1.1)
     nio4r (2.5.2)
+    ruby_coincheck_client (0.3.0)
     slack-ruby-bot (0.16.0)
       hashie
       slack-ruby-client (>= 0.14.0)
@@ -40,6 +41,7 @@ PLATFORMS
 DEPENDENCIES
   async-websocket (~> 0.8.0)
   dotenv
+  ruby_coincheck_client
   slack-ruby-bot
 
 BUNDLED WITH

@@ -1,10 +1,9 @@
 require 'dotenv'
 require 'slack-ruby-client'
 require './src/weather'
+require './src/cryptocurrency'
 
 Dotenv.load
-
-API_KEY = ENV['OPEN_WEATHER_API']
 
 Slack.configure do |conf|
   conf.token = ENV['SLACK_BOT_TOKEN']
@@ -18,9 +17,12 @@ end
 
 client.on :message do |data|
   case data.text
-    when '練馬の気温'
-      weather = Weather.new(API_KEY)
-      client.message channel: data.channel, text: '現在の練馬の' + weather.weather_info('Nerima')
+    when '練馬の気温は？'
+      weather = Weather.new
+      client.message channel: data.channel, text: weather.weather_info('Nerima')
+    when 'BTC価格は？'
+      cryptocurrency = Cryptcurrency.new
+      client.message channel: data.channel, text: cryptocurrency.rate_info
   end
 end
 
