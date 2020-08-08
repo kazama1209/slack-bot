@@ -18,10 +18,10 @@ end
 
 client.on :message do |data|
   case data.text
-    when '練馬の気温は？'
+    when '練馬の気温'
       weather = Weather.new
       client.message channel: data.channel, text: weather.weather_info('Nerima')
-    when 'BTC価格は？'
+    when 'BTC価格'
       cryptocurrency = Cryptcurrency.new
       client.message channel: data.channel, text: cryptocurrency.rate_info
     when 'アニメ名言'
