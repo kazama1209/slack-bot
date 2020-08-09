@@ -4,3 +4,6 @@
 
 # Ignore environment variables.
 .env
+
+# Ignore Heroku config.
+heroku/
