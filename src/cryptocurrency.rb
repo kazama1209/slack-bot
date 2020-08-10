@@ -8,6 +8,6 @@ class Cryptcurrency
     json = JSON.parse(response.body)
 
     rate = json['rate']
-    "現在のBTC価格は#{rate.to_s}円です。"
+    return "現在のBTC価格は#{rate.to_s}円です。"
   end
 end

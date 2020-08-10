@@ -3,6 +3,7 @@ require 'slack-ruby-client'
 require './src/weather'
 require './src/cryptocurrency'
 require './src/anime_quote'
+require './src/quiita_trend'
 
 Dotenv.load
 
@@ -18,15 +19,18 @@ end
 
 client.on :message do |data|
   case data.text
-    when '練馬の気温'
+    when 'bot:nerima'
       weather = Weather.new
       client.message channel: data.channel, text: weather.weather_info('Nerima')
-    when 'BTC価格'
+    when 'bot:btc'
       cryptocurrency = Cryptcurrency.new
       client.message channel: data.channel, text: cryptocurrency.rate_info
-    when 'アニメ名言'
+    when 'bot:anime'
       anime_quote = AnimeQuote.new
       client.message channel: data.channel, text: anime_quote.random_output
+    when 'bot:quiita'
+      quiita_trend = QuiitaTrend.new
+      client.message channel: data.channel, text: quiita_trend.articles
   end
 end
 

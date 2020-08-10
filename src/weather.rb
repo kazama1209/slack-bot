@@ -15,6 +15,6 @@ class Weather
     celsius = temp - 273.15
     celsius_round = celsius.round
 
-    "現在の練馬の気温は#{celsius_round.to_s}℃です。"
+    return "現在の練馬の気温は#{celsius_round.to_s}℃です。"
   end
 end

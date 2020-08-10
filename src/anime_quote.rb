@@ -23,9 +23,9 @@ class AnimeQuote
     anime_quote = anime_quotes.sample
 
     if anime_quote[4] == " "
-      anime_quote[5..-1]
+      return anime_quote[5..-1]
     else
-      anime_quote[4..-1]
+      return anime_quote[4..-1]
     end
   end
 end
