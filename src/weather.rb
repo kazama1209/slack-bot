@@ -3,7 +3,7 @@ require 'uri'
 require 'json'
 
 class Weather
-  def weather_info(locate)
+  def current_temp(locate)
     end_point_url = 'http://api.openweathermap.org/data/2.5/weather'
     api_key = ENV['OPEN_WEATHER_API']
 

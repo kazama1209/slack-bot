@@ -1,7 +1,7 @@
 require 'ruby_coincheck_client'
 
 class Cryptcurrency
-  def rate_info
+  def btc_rate
     cc = CoincheckClient.new(ENV['CC_API_KEY'], ENV['CC_SECRET_KEY'])
 
     response = cc.read_rate
