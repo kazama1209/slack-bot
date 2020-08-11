@@ -19,16 +19,16 @@ end
 
 client.on :message do |data|
   case data.text
-    when 'call:nerima-temp'
+    when '/nerima'
       weather = Weather.new
       client.message channel: data.channel, text: weather.current_temp('Nerima')
-    when 'call:btc-rate'
+    when '/btc'
       cryptocurrency = Cryptcurrency.new
       client.message channel: data.channel, text: cryptocurrency.btc_rate
-    when 'call:anime-meigen'
+    when '/anime'
       anime_quote = AnimeQuote.new
       client.message channel: data.channel, text: anime_quote.random_output
-    when 'call:quiita-trend'
+    when '/quiita'
       quiita_trend = QuiitaTrend.new
       client.message channel: data.channel, text: quiita_trend.articles
   end
