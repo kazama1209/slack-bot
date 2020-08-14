@@ -13,14 +13,17 @@ Slack.configure do |conf|
   conf.token = ENV['SLACK_BOT_TOKEN']
 end
 
-post '/' do
+get '/' do
+  'Hello World!'
+end
+
+post '/webhook' do
   client = Slack::Web::Client.new
 
-  req = URI.decode_www_form(request.body.read)
+  channel_id = params['channel_id']
+  command = params['command']
 
-  channel_id = req.assoc('channel_id').last
-
-  case req.assoc('command').last
+  case command
     when '/nerima'
       weather = Weather.new
       client.chat_postMessage channel: channel_id, text: weather.current_temp('Nerima'), as_user: true
