@@ -17,7 +17,7 @@ Slackのチャットで特定のキーワードを打ち込みスラッシュコ
 
 「/anime」と打ち込むとアニメ格言を返してくれる。
 
-## 本日のQuiitaのトレンド記事一覧 「/quiita」
+## Quiitaのトレンド記事 「/quiita」
 <img src="https://user-images.githubusercontent.com/51913879/90298210-44f7b300-decc-11ea-9807-58715f331ef0.jpeg" width="200px">
 
 「/quiita」と打ち込むと本日のQuiitaのトレンド記事一覧を返してくれる。
