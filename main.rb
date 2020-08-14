@@ -1,5 +1,7 @@
 require 'dotenv'
+require 'pry'
 require 'slack-ruby-client'
+require 'sinatra'
 require './src/weather'
 require './src/cryptocurrency'
 require './src/anime_quote'
@@ -11,35 +13,27 @@ Slack.configure do |conf|
   conf.token = ENV['SLACK_BOT_TOKEN']
 end
 
-client = Slack::RealTime::Client.new
+post '/' do
+  client = Slack::Web::Client.new
 
-client.on :hello do
-  puts "Successfully connected, welcome '#{client.self.name}' to the '#{client.team.name}' team at https://#{client.team.domain}.slack.com."
-end
+  req = URI.decode_www_form(request.body.read)
 
-client.on :message do |data|
-  case data.text
+  channel_id = req.assoc('channel_id').last
+
+  case req.assoc('command').last
     when '/nerima'
       weather = Weather.new
-      client.message channel: data.channel, text: weather.current_temp('Nerima')
+      client.chat_postMessage channel: channel_id, text: weather.current_temp('Nerima'), as_user: true
     when '/btc'
       cryptocurrency = Cryptcurrency.new
-      client.message channel: data.channel, text: cryptocurrency.btc_rate
+      client.chat_postMessage channel: channel_id, text: cryptocurrency.btc_rate, as_user: true
     when '/anime'
       anime_quote = AnimeQuote.new
-      client.message channel: data.channel, text: anime_quote.random_output
+      client.chat_postMessage channel: channel_id, text: anime_quote.random_output, as_user: true
     when '/quiita'
-      quiita_trend = QuiitaTrend.new
-      client.message channel: data.channel, text: quiita_trend.articles
+      quiita_trend = QuiitaTrend.new 
+      client.chat_postMessage channel: channel_id, text: quiita_trend.articles, as_user: true
   end
-end
 
-client.on :close do |_data|
-  puts 'Client is about to disconnect'
+  return
 end
-
-client.on :closed do |_data|
-  puts 'Client has disconnected successfully!'
-end
-
-client.start!
