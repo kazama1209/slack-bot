@@ -1,17 +1,14 @@
-require 'net/http'
-require 'uri'
 require 'json'
 
 class Weather
   def current_temp(locate)
-    end_point_url = 'http://api.openweathermap.org/data/2.5/weather'
-    api_key = ENV['OPEN_WEATHER_API']
+    end_point_url = "http://api.openweathermap.org/data/2.5/weather"
+    api_key = ENV["OPEN_WEATHER_API"]
 
-    request_url = URI.parse(end_point_url + "?q=#{locate},jp&APPID=#{api_key}")
-    response = Net::HTTP.get(request_url)
-    json = JSON.parse(response)
+    res = Faraday.get(end_point_url + "?q=#{locate},jp&APPID=#{api_key}")
+    res_body = JSON.parse(res.body)
 
-    temp = json['main']['temp']
+    temp = res_body['main']['temp']
     celsius = temp - 273.15
     celsius_round = celsius.round
 

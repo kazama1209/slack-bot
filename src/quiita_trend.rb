@@ -1,19 +1,16 @@
-require 'net/http'
-require 'uri'
 require 'json'
 
 class QuiitaTrend
   def articles
-    request_url = URI.parse('https://qiita-api.netlify.app/.netlify/functions/trend')
-    response = Net::HTTP.get(request_url)
+    res = Faraday.get("https://qiita-api.netlify.app/.netlify/functions/trend")
 
-    articles = JSON.parse(response)
+    articles = JSON.parse(res.body)
 
     article_titles = []
     article_urls = []
 
     articles.each do |article|
-      article_titles << article['node']['title']
+      article_titles << article["node"]["title"]
       article_urls << "https://qiita.com/#{article['node']['author']['urlName']}/items/#{article['node']['uuid']}"
     end
 
