@@ -14,16 +14,16 @@ class ForeignExchange
     usd_cad = res_body['quotes'][8]['ask']
     usd_chf = res_body['quotes'][15]['ask']
 
-    usd_straight_pairs = <<-EOS
-ドルストレート
+    usd_straight_pairs = <<~EOS
+      ドルストレート
 
-USD/JPY: #{usd_jpy}
-USD/CAD: #{usd_cad}
-USD/CHF: #{usd_chf}
-EUR/USD: #{eur_usd}
-GBP/USD: #{gbp_usd}
-AUD/USD: #{aud_usd}
-NZD/USD: #{nzd_usd}
+      USD/JPY: #{usd_jpy}
+      USD/CAD: #{usd_cad}
+      USD/CHF: #{usd_chf}
+      EUR/USD: #{eur_usd}
+      GBP/USD: #{gbp_usd}
+      AUD/USD: #{aud_usd}
+      NZD/USD: #{nzd_usd}
     EOS
 
     # クロス円
@@ -33,14 +33,14 @@ NZD/USD: #{nzd_usd}
     cad_jpy = res_body['quotes'][1]['ask']
     chf_jpy = res_body['quotes'][13]['ask']
 
-    cross_yen_pairs = <<-EOS
-クロス円
+    cross_yen_pairs = <<~EOS
+      クロス円
 
-GBP/JPY: #{gbp_jpy}
-AUD/JPY: #{aud_jpy}
-NZD/JPY: #{nzd_jpy}
-CAD/JPY: #{cad_jpy}
-CHF/JPY: #{chf_jpy}
+      GBP/JPY: #{gbp_jpy}
+      AUD/JPY: #{aud_jpy}
+      NZD/JPY: #{nzd_jpy}
+      CAD/JPY: #{cad_jpy}
+      CHF/JPY: #{chf_jpy}
     EOS
 
     # ユーロクロス
@@ -51,27 +51,27 @@ CHF/JPY: #{chf_jpy}
     eur_cad = res_body['quotes'][5]['ask']
     eur_chf = res_body['quotes'][12]['ask']
 
-    eur_cross_pairs = <<-EOS
-ユーロクロス
+    eur_cross_pairs = <<~EOS
+      ユーロクロス
 
-EUR/JPY: #{eur_jpy}
-EUR/GBP: #{eur_gbp}
-EUR/AUD: #{eur_aud}
-EUR/NZD: #{eur_nzd}
-EUR/CAD: #{eur_cad}
-EUR/CHF: #{eur_chf}
+      EUR/JPY: #{eur_jpy}
+      EUR/GBP: #{eur_gbp}
+      EUR/AUD: #{eur_aud}
+      EUR/NZD: #{eur_nzd}
+      EUR/CAD: #{eur_cad}
+      EUR/CHF: #{eur_chf}
     EOS
 
-    fx_info = <<-EOS
-```
-【外国為替取引情報】
+    fx_info = <<~EOS
+      ```
+      【外国為替取引情報】
 
-#{usd_straight_pairs}
+      #{usd_straight_pairs}
 
-#{cross_yen_pairs}
+      #{cross_yen_pairs}
 
-#{eur_cross_pairs}
-```
+      #{eur_cross_pairs}
+      ```
     EOS
 
     return fx_info
