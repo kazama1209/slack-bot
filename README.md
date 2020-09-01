@@ -12,6 +12,11 @@ Slackのチャットで特定のキーワードを打ち込みスラッシュコ
 
 「/btc」と打ち込むと現在のビットコイン価格（円）を返してくれる。
 
+## 外国為替レート 「fx」
+<img src="https://user-images.githubusercontent.com/51913879/91895830-d50e6880-ecd2-11ea-9724-c1d691f5727c.jpg" width="200px">
+
+「/fx」と打ち込むと現在の外国為替レートを返してくれる。
+
 ## アニメ名言 「/anime」
 <img src="https://user-images.githubusercontent.com/51913879/90298163-0d890680-decc-11ea-8d97-1fd5360243f6.jpg" width="200px">
 
@@ -21,3 +26,8 @@ Slackのチャットで特定のキーワードを打ち込みスラッシュコ
 <img src="https://user-images.githubusercontent.com/51913879/90298210-44f7b300-decc-11ea-9807-58715f331ef0.jpeg" width="200px">
 
 「/quiita」と打ち込むと本日のQuiitaのトレンド記事一覧を返してくれる。
+
+## Spotifyのプレイリスト 「/spotify」
+<img src="https://user-images.githubusercontent.com/51913879/91895942-08e98e00-ecd3-11ea-9cfa-8f65c4b5e7a3.png" width="200px">
+
+「/spotify」と打ち込むとSpotifyのプレイリストをランダムに一つ返してくれる。（今のところアニソンのみ）

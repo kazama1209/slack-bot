@@ -7,6 +7,7 @@ require './src/foreign_exchange'
 require './src/cryptocurrency'
 require './src/anime_quote'
 require './src/quiita_trend'
+require './src/spotify'
 
 Dotenv.load
 
@@ -40,6 +41,9 @@ post '/webhook' do
     when '/quiita'
       quiita_trend = QuiitaTrend.new 
       client.chat_postMessage channel: channel_id, text: quiita_trend.articles, as_user: true
+    when '/spotify'
+      spotify = Spotify.new
+      client.chat_postMessage channel: channel_id, text: spotify.playlists, as_user: true
   end
 
   return
